@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 public class Veiculo extends Frota{
 
-    public int codigoFrota;
-    public String placa;
+    protected int codigoFrota;
+    protected String placa;
 
     public Veiculo() {
     }

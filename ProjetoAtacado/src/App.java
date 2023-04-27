@@ -1,8 +1,10 @@
+/* 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+*/
 import br.com.atacado.dominio.*;
+import br.com.atacado.fakeDB.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -25,6 +27,7 @@ public class App {
          * System.out.println();
          */
 
+        /*
         Categoria c1 = new Categoria(1, "Laticínios", LocalDate.now());
 
         Subcategoria s1 = new Subcategoria(1, 1, "Queijos", LocalDate.now());
@@ -52,6 +55,22 @@ public class App {
         subs.add(s2);
 
         c1.setSubcategorias(subs);
+        */
+
+        CategoriaFakeDB db1 = new CategoriaFakeDB();
+        for (Categoria c : db1.getTabela()) {
+            System.out.println(c.toString());
+        }
+
+        SubcategoriaFakeDB db2 = new SubcategoriaFakeDB();
+        for (Subcategoria c : db2.getTabela()) {
+            System.out.println(c.toString());
+        }
+        
+        ProdutoFakeDB db3 = new ProdutoFakeDB();
+        for (Produto c : db3.getTabela()) {
+            System.out.println(c.toString());
+        }
 
     }
 

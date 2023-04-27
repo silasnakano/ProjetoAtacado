@@ -61,4 +61,10 @@ public class Produto {
         this.dataDeInclusao = dataDeInclusao;
     }
 
+    @Override
+    public String toString() {
+        return "Produto [codigo=" + codigo + ", codigoSubcategoria=" + codigoSubcategoria + ", descricao=" + descricao
+                + ", valor=" + valor + ", dataDeInclusao=" + dataDeInclusao + "]";
+    }
+
 }

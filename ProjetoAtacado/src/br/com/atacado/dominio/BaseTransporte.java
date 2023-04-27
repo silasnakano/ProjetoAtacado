@@ -2,11 +2,11 @@ package br.com.atacado.dominio;
 
 import java.time.LocalDate;
 
-public class BaseTransporte {
+public abstract class BaseTransporte {
     
-    private int codigo;
-    private String descricao;
-    private LocalDate dataInsert;
+    protected int codigo;
+    protected String descricao;
+    protected LocalDate dataInsert;
     
     public int getCodigo() {
         return codigo;

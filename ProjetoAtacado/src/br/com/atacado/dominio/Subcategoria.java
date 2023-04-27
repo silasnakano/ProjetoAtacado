@@ -62,4 +62,10 @@ public class Subcategoria {
         this.dataDeInclusao = dataDeInclusao;
     }
 
+    @Override
+    public String toString() {
+        return "Subcategoria [codigo=" + codigo + ", codigoCategoria=" + codigoCategoria + ", descricao=" + descricao
+                + ", dataDeInclusao=" + dataDeInclusao + "]";
+    }
+
 }
