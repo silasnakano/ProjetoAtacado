@@ -1,68 +1,50 @@
 package br.com.atacado.repositorio;
 
-import br.com.atacado.dominio.Categoria;
-import br.com.atacado.fakeDB.CategoriaFakeDB;
+import br.com.atacado.dominio.Subcategoria;
+import br.com.atacado.fakeDB.SubcategoriaFakeDB;
 
-public class CategoriaRepositorio extends BaseRepositorio<Categoria> {
+public class SubcategoriaRepositorio extends BaseRepositorio<Subcategoria> {
 
-    public CategoriaRepositorio() {
+    public SubcategoriaRepositorio() {
         super();
-        this.tabela = new CategoriaFakeDB().getTabela();
+        this.tabela = new SubcategoriaFakeDB().getTabela();
     }
 
     @Override
-    public Categoria Create(Categoria obj) {
-
+    public Subcategoria Create(Subcategoria obj) {
         int chave = 0;
-
-        // Confere se a tabela está vazia senão add incrementando o codigo em +1
         if (this.tabela.size() == 0) {
             chave++;
         } else {
             int tamanho = this.tabela.size();
             chave = this.tabela.get(tamanho - 1).getCodigo() + 1;
         }
-
-        // Add "codigo"
         obj.setCodigo(chave);
-        // Add "descrição" a tabela
         this.tabela.add(obj);
-
         return obj;
-
     }
 
     @Override
-    public Categoria Read(int chave) {
-
-        Categoria res = new Categoria();
-
-        for (Categoria tupla : this.tabela) {
-
+    public Subcategoria Read(int chave) {
+        Subcategoria res = new Subcategoria();
+        for (Subcategoria tupla : this.tabela) {
             if (tupla.getCodigo() == chave) {
                 res = tupla;
                 break;
             } else {
                 res = null;
             }
-
         }
-
         return res;
-
     }
 
     @Override
-    public Categoria Update(Categoria obj) {
-
-        Categoria alteracao = this.Read(obj.getCodigo());
-
+    public Subcategoria Update(Subcategoria obj) {
+        Subcategoria alteracao = this.Read(obj.getCodigo());
         if (alteracao != null) {
             alteracao.setDescricao(obj.getDescricao());
         }
-
         return alteracao;
-
     }
 
 }

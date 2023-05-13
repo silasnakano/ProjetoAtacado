@@ -8,7 +8,7 @@ import br.com.atacado.dominio.*;
 import br.com.atacado.fakeDB.*;
 */
 
-import br.com.atacado.teste.TesteCategoriaRepositorio;
+import br.com.atacado.teste.CategoriaTeste;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -78,7 +78,7 @@ public class App {
          * }
          */
 
-        TesteCategoriaRepositorio teste = new TesteCategoriaRepositorio();
+        CategoriaTeste teste = new CategoriaTeste();
         teste.Executar();
 
     }

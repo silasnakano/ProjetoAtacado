@@ -1,68 +1,50 @@
 package br.com.atacado.repositorio;
 
-import br.com.atacado.dominio.Categoria;
-import br.com.atacado.fakeDB.CategoriaFakeDB;
+import br.com.atacado.dominio.Produto;
+import br.com.atacado.fakeDB.ProdutoFakeDB;
 
-public class CategoriaRepositorio extends BaseRepositorio<Categoria> {
+public class ProdutoRepositorio extends BaseRepositorio<Produto> {
 
-    public CategoriaRepositorio() {
+    public ProdutoRepositorio() {
         super();
-        this.tabela = new CategoriaFakeDB().getTabela();
+        this.tabela = new ProdutoFakeDB().getTabela();
     }
 
     @Override
-    public Categoria Create(Categoria obj) {
-
+    public Produto Create(Produto obj) {
         int chave = 0;
-
-        // Confere se a tabela está vazia senão add incrementando o codigo em +1
         if (this.tabela.size() == 0) {
             chave++;
         } else {
             int tamanho = this.tabela.size();
             chave = this.tabela.get(tamanho - 1).getCodigo() + 1;
         }
-
-        // Add "codigo"
         obj.setCodigo(chave);
-        // Add "descrição" a tabela
         this.tabela.add(obj);
-
         return obj;
-
     }
 
     @Override
-    public Categoria Read(int chave) {
-
-        Categoria res = new Categoria();
-
-        for (Categoria tupla : this.tabela) {
-
+    public Produto Read(int chave) {
+        Produto res = new Produto();
+        for (Produto tupla : this.tabela) {
             if (tupla.getCodigo() == chave) {
                 res = tupla;
                 break;
             } else {
                 res = null;
             }
-
         }
-
         return res;
-
     }
 
     @Override
-    public Categoria Update(Categoria obj) {
-
-        Categoria alteracao = this.Read(obj.getCodigo());
-
+    public Produto Update(Produto obj) {
+        Produto alteracao = this.Read(obj.getCodigo());
         if (alteracao != null) {
             alteracao.setDescricao(obj.getDescricao());
         }
-
         return alteracao;
-
     }
 
 }
